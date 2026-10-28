@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f8eee7">
+<title>Hussain's Knee-d to Relax Club</title>
+<style>
+  :root { --cream:#fffaf5; --ink:#292522; --muted:#766b64; --rose:#e9b9ad; --red:#9e4c45; --peach:#f7dfd1; --sage:#dce5d5; --line:#eadbd2; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--cream); color:var(--ink); font-family: ui-rounded, "Avenir Next", Avenir, system-ui, sans-serif; }
+  .wrap { width:min(760px, 100%); margin:auto; padding:22px 17px 46px; }
+  .top { display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:12px; text-transform:uppercase; letter-spacing:.13em; color:var(--muted); }
+  .stamp { border:1px solid var(--line); padding:7px 10px; border-radius:999px; white-space:nowrap; }
+  .hero { margin-top:28px; padding:28px 23px 25px; background:var(--peach); border-radius:25px; position:relative; overflow:hidden; }
+  .eyebrow { font-size:12px; text-transform:uppercase; letter-spacing:.15em; font-weight:800; color:var(--red); }
+  h1 { font-size:clamp(40px, 9vw, 67px); line-height:.98; letter-spacing:-.065em; margin:14px 0 15px; max-width:550px; }
+  .hero p { max-width:440px; line-height:1.6; color:#51443e; margin:0; }
+  .knee { position:absolute; right:15px; bottom:5px; font-size:76px; transform:rotate(-13deg); opacity:.88; }
+  .notice { margin:14px 0 25px; padding:14px 16px; border:1px dashed #d9b7a9; border-radius:16px; background:#fffdf9; font-size:14px; line-height:1.55; }
+  .notice strong { color:var(--red); }
+  .section-head { display:flex; align-items:end; justify-content:space-between; gap:12px; margin:27px 0 12px; }
+  h2 { margin:0; font-size:23px; letter-spacing:-.04em; }
+  .small { font-size:12px; color:var(--muted); }
+  .tabs { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:17px 0 13px; }
+  .tab { border:1px solid var(--line); background:#fffdf9; border-radius:14px; padding:12px 7px; font:inherit; font-size:13px; font-weight:750; cursor:pointer; color:var(--ink); }
+  .tab.active { background:var(--ink); color:white; border-color:var(--ink); }
+  .cards { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  .card { padding:16px; border:1px solid var(--line); background:#fffdf9; border-radius:17px; min-height:143px; display:flex; flex-direction:column; }
+  .emoji { font-size:25px; margin-bottom:9px; }
+  .card h3 { margin:0 0 6px; font-size:16px; letter-spacing:-.025em; }
+  .card p { margin:0; color:var(--muted); font-size:13px; line-height:1.5; }
+  .tag { margin-top:auto; padding-top:13px; color:var(--red); font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.1em; }
+  .button { width:100%; border:0; border-radius:15px; padding:14px 16px; background:var(--sage); color:var(--ink); font:inherit; font-weight:800; cursor:pointer; margin-top:12px; }
+  .daily { border-radius:21px; background:#f3e8f1; padding:20px; margin-top:25px; }
+  .daily h2 { margin:8px 0; }
+  #challenge { line-height:1.6; margin:0; }
+  .letter { margin-top:25px; padding:21px; border:1px solid var(--line); border-radius:21px; background:#fffdf9; }
+  .letter p { line-height:1.7; margin:10px 0 0; color:#514943; }
+  .editable { border-bottom:1px dashed #c99b8c; }
+  footer { text-align:center; margin-top:27px; color:var(--muted); font-size:12px; line-height:1.7; }
+  @media(max-width:430px) { .knee { font-size:57px; right:9px; bottom:8px; } .hero { padding:24px 19px 26px; } .hero p { max-width:80%; } .cards { gap:8px; } .card { padding:13px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span>HUSSAIN'S VERY OFFICIAL RECOVERY DEPARTMENT</span><span class="stamp">Issue No. 001</span></div>
+  <header class="hero">
+    <div class="eyebrow">A very serious medical publication</div>
+    <h1>Hussain's<br>Knee-d to Relax Club.</h1>
+    <p>Liverpool can handle the matchday pressure. Your knee, apparently, could not. Until further notice, your responsibilities are to rest, hydrate, and let the healing arc begin.</p>
+    <div class="knee" aria-hidden="true">🦵</div>
+  </header>
+
+  <div class="notice"><strong>OFFICIAL NOTICE:</strong> Walking around like nothing happened is not a personality trait, Hussain. Follow your medical team's instructions, take it easy, and accept that for once, the main character has to stay seated.</div>
+
+  <div class="section-head"><h2>Hussain's anti-boredom menu</h2><span class="small">Pick your current side quest</span></div>
+  <div class="tabs" role="tablist" aria-label="Boredom menu">
+    <button class="tab active" data-kind="movies">🎬 Movies & TV</button>
+    <button class="tab" data-kind="books">📚 Books</button>
+    <button class="tab" data-kind="activities">⚽ Other stuff</button>
+  </div>
+  <div id="cards" class="cards" aria-live="polite"></div>
+  <button class="button" id="random">🎲 The algorithm chooses your fate</button>
+
+  <section class="daily">
+    <div class="eyebrow">Your tiny mission</div>
+    <h2>Today's side quest, Hussain</h2>
+    <p id="challenge">Send your remote recovery support team a voice note reviewing your current level of boredom like you're a professional film critic.</p>
+    <button class="button" id="newChallenge" style="background:#e4d3e2">Give me another mission ↻</button>
+  </section>
+
+  <section class="letter">
+    <div class="eyebrow">A note from someone who definitely isn't spoiling you</div>
+    <h2>A little reminder, just in case 🤍</h2>
+    <p>Since I can't be there to keep you company in person right now, I made you a tiny corner of the internet. Consider it your personal recovery package: a little Friends, a little Liverpool, something to watch, something to read, and a few distractions from being stuck at home. No pressure to be in a good mood or reply quickly — just take care of yourself and let your knee heal properly. And please remember: I'm expecting a full review of this website. I put at least 47 seconds of emotional labour into it, so be nice. 🤍</p>
+    <p style="font-weight:800; color:#9e4c45;">— Your favourite member of the remote recovery support team 😉</p>
+  </section>
+  <footer>Made with care, mild flirting, and absolutely no medical qualifications.<br>Recovery rules still come from your actual medical team, not this website.</footer>
+</div>
+<script>
+const content = {
+ movies: [
+  {emoji:"🔴", title:"Liverpool therapy", desc:"Watch the highlights, revisit a legendary comeback, and pretend this is the most stressful thing happening this week.", tag:"You'll Never Walk Alone"},
+  {emoji:"☕", title:"Friends: one more episode", desc:"Your doctor prescribed rest. I am prescribing the episode where everything goes wrong at Central Perk.", tag:"Comfort TV"},
+  {emoji:"😂", title:"Comedy movie night", desc:"Laugh at fictional people's bad decisions instead of making any questionable decisions with your knee.", tag:"Low effort, high reward"},
+  {emoji:"🎬", title:"Pick a film for us to discuss", desc:"Watch something good and send me your review. I will be judging your taste. Respectfully. Probably.", tag:"A very serious review"},
+  {emoji:"🛋️", title:"The comfort rewatch", desc:"Choose a familiar favourite and let your brain take the day off. You have earned premium-level laziness.", tag:"Zero plot effort"},
+  {emoji:"🕵️", title:"Mystery or thriller", desc:"Solve fictional crimes from the safety of your sofa. Please don't attempt any detective work on your knee.", tag:"Stay seated, Sherlock"}
+ ],
+ books: [
+  {emoji:"📖", title:"A short, absorbing read", desc:"Something you can dip into between naps and episodes. No one is giving out homework here.", tag:"Easy reading"},
+  {emoji:"🌍", title:"A book that takes you somewhere", desc:"A tiny escape when the sofa starts feeling like your whole postcode.", tag:"Travel from bed"},
+  {emoji:"🧩", title:"A mystery novel", desc:"Become suspicious of every character. This is your official detective era.", tag:"Plot twists"},
+  {emoji:"💬", title:"A book worth talking about", desc:"Pick something with a great story and tell me if it's actually good. I need trustworthy recommendations, Hussain.", tag:"Book club of two?"},
+  {emoji:"📚", title:"Read 10 pages. That's it.", desc:"No dramatic reading goals. Ten pages counts; falling asleep with the book open also counts as commitment.", tag:"No pressure"}
+ ],
+ activities: [
+  {emoji:"⚽", title:"Liverpool fan duty", desc:"Make your best all-time Liverpool XI, rank your favourite players, or explain one football opinion you will defend forever.", tag:"You'll Never Walk Alone"},
+  {emoji:"🎵", title:"Build a recovery playlist", desc:"Five songs for the comeback montage, three for dramatic staring out the window, and one for the inevitable return to walking.", tag:"Soundtrack your era"},
+  {emoji:"🎧", title:"Send me one song", desc:"One song you think I should hear. I reserve the right to ask why, and possibly steal it for my playlist.", tag:"Music exchange"},
+  {emoji:"☕", title:"Friends character draft", desc:"Rank the six Friends characters, defend your choices, and prepare for a completely unnecessary debate.", tag:"Central Perk committee"},
+  {emoji:"🎙️", title:"Voice-note film review", desc:"Review your latest watch like a critic with a deadline. Bonus points for dramatic delivery.", tag:"Award-winning analysis"},
+  {emoji:"📝", title:"Make a tier list", desc:"Rank Liverpool kits, films, snacks, songs, or Friends episodes. This is important research.", tag:"Very serious work"},
+  {emoji:"🎲", title:"Let me pick your next watch", desc:"Message me your mood and I'll help choose something. Yes, this is a legitimate service.", tag:"Remote concierge"},
+  {emoji:"📸", title:"The sofa scavenger hunt", desc:"Find five things around you that match one colour without turning recovery into an Olympic event.", tag:"Stay comfy"}
+ ]
+}
+const cards = document.getElementById('cards');
+function show(kind) {
+  cards.innerHTML = content[kind].map((item,i)=>`<article class="card"><div class="emoji">${item.emoji}</div><h3>${item.title}</h3><p>${item.desc}</p><div class="tag">${item.tag}</div></article>`).join('');
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.kind===kind));
+}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>show(b.dataset.kind)));
+document.getElementById('random').addEventListener('click',()=>{
+ const all=Object.values(content).flat();
+ const item=all[Math.floor(Math.random()*all.length)];
+ document.getElementById('challenge').textContent=`${item.emoji} ${item.title}: ${item.desc}`;
+ document.querySelector('.daily').scrollIntoView({behavior:'smooth',block:'center'});
+});
+const challenges=[
+ "Build your all-time Liverpool XI. You may be dramatic, but you must be prepared to defend every pick.",
+ "Pick one Friends episode and explain why it deserves a place in the top five. The committee (me) will review your case.",
+ "Send me one song for my playlist. Your music taste is now under friendly investigation.",
+ "Choose a film for tonight and send me a one-sentence review. I will be taking notes.",
+ "Make a top-three list: Liverpool moments, comfort shows, or best movie endings. Defend your rankings.",
+ "Choose a song for your grand comeback montage. Yes, there will be a montage. No, the knee gets no stunt work.",
+ "Learn one weird fact and casually bring it up like you're hosting a documentary.",
+ "Pick a book, read a few pages, and tell me if it's worth my time. I trust your review... mostly.",
+ "Your mission is to rest properly today. Annoyingly, this is the one instruction you are not allowed to argue with."
+]
+document.getElementById('newChallenge').addEventListener('click',()=>{
+ document.getElementById('challenge').textContent=challenges[Math.floor(Math.random()*challenges.length)];
+});
+show('movies');
+</script>
+</body>
+</html>
