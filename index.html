@@ -138,5 +138,81 @@ document.getElementById('newChallenge').addEventListener('click',()=>{
 });
 show('movies');
 </script>
+
+<!-- Our next adventure -->
+<section class="highlands-card">
+  <img
+    src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1600&q=85"
+    alt="Beautiful mountain landscape for our future hiking adventure"
+    class="highlands-image"
+  >
+
+  <div class="highlands-message">
+    <p class="highlands-icon">🏔️ 🥾</p>
+    <h2>Our next adventure</h2>
+    <p>Get well soon, Hussain.</p>
+    <p>The Scottish Highlands aren't going to hike themselves, you know.</p>
+    <p class="highlands-note">
+      Heal properly first. We have mountains to climb. ♡
+    </p>
+  </div>
+</section>
+
+<style>
+  .highlands-card {
+    margin: 28px 0;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #f8eee9;
+    border: 1px solid #ead8d8;
+    text-align: center;
+  }
+
+  .highlands-image {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .highlands-message {
+    padding: 24px 20px 28px;
+    color: #493440;
+  }
+
+  .highlands-icon {
+    font-size: 24px;
+    margin: 0 0 8px;
+  }
+
+  .highlands-message h2 {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    color: #7e405e;
+    margin: 8px 0 16px;
+  }
+
+  .highlands-message p {
+    line-height: 1.7;
+  }
+
+  .highlands-note {
+    font-family: Georgia, serif;
+    font-style: italic;
+    color: #8b4d6b;
+    margin-top: 18px;
+  }
+
+  @media (max-width: 600px) {
+    .highlands-image {
+      height: 200px;
+    }
+
+    .highlands-message h2 {
+      font-size: 25px;
+    }
+  }
+</style>
+
 </body>
 </html>
